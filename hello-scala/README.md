@@ -18,7 +18,7 @@
 
 ### 動作イメージ
 
-![動作イメージ](/mwsoft/raw/master/public/images/snapshot01.png)
+![動作イメージ](/mwsoft/play_samples/blob/master/hello-scala/public/images/snapshot01.png "")
 
 ------
 
