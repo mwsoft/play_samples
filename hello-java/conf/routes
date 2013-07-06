@@ -1,0 +1,21 @@
+# / にリクエスト → controllers.scala.Hello1 の index が呼び出される
+GET     /             controllers.Hello1.index
+
+# /hello2 にリクエスト → controllers.scala.Hello1.hello が呼び出される
+GET     /hello2       controllers.Hello1.hello
+
+#  略
+GET     /hello3       controllers.Hello1.hello2
+
+# リクエストパスの /hello4/ 以下の部分が msg という変数に設定され、 Action に引数として渡される
+# たとえば /hello4/foo にリクエストされれば、 msg の値は foo となる
+GET     /hello4/:msg  controllers.Hello2.hello( msg: String ) 
+
+# hello4 とほぼ同じ動きだが、パラメータを正規表現で指定している
+# [a-zA-Z\S] 以外の文字が入っていた場合はパスする
+GET     /hello5/$msg<[a-zA-Z\S]+>    controllers.Hello2.helloWithDecode( msg: String )  
+
+# /hello5?msg=foo のようにクエリ文字列に msg が含まれる場合に、
+# 指定された値（例では foo ）が引数として Action に渡される
+# 指定パラメータが設定されていない場合は Bad request
+GET     /hello6       controllers.Hello2.hello( msg: String ) 
