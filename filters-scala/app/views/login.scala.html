@@ -1,0 +1,21 @@
+@( loginForm: Form[(String, String)], token: play.filters.csrf.CSRF.Token )
+
+@main("ログインページ") {
+    
+    <style type="text/css">
+      .error { color: red; }
+      .info { visibility: hidden }
+    </style>
+    
+    @loginForm.globalError.map { err => 
+      <p class="error">@err.message</p>
+    }
+
+    @helper.form( helper.CSRF( routes.Login.login )(token) ) {
+        @helper.inputText( loginForm("ユーザID") )
+        @helper.inputPassword( loginForm("パスワード") )
+        <button>ログイン</button>
+    }
+    
+    <p>※ user と pass で入れます
+}
