@@ -19,7 +19,7 @@ class LoggingFilter extends Filter {
     def logTime(result: Result): Result = {
       val time = System.currentTimeMillis - start
       Logger.info(req.path + " : " + time + "msedc")
-      result.withHeaders("Request-Time" -> time.toString)
+      result
     }
 
     logTime( next(req) )
